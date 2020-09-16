@@ -25,15 +25,15 @@
     "build-dev": "tsc --outDir ./build_dev && npm run copypackage_dev"
   },
   "dependencies": {
-    "mongoose": "^5.10.2"
+    "mongoose": "^5.9.21"
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/mongoose": "^5.7.29",
-    "@types/node": "^14.10.2",
+    "@types/node": "^13.13.2",
     "jest": "^25.4.0",
     "ts-jest": "^25.4.0",
-    "typescript": "^4.0.2"
+    "typescript": "^3.8.3"
   },
   "repository": {
     "type": "git",
