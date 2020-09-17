@@ -1,40 +1,7 @@
-import { Exception } from '@rheas/errors';
 import mongoose, { Mongoose } from 'mongoose';
-import { IDbConfig } from '@rheas/contracts/configs';
-import { IDbConnector, KeyValue } from '@rheas/contracts';
+import { BaseConnector } from '../baseConector';
 
-export class MongoDbConnector implements IDbConnector<Mongoose> {
-    /**
-     * Database configuration.
-     *
-     * @var IDbConfig
-     */
-    protected _config: IDbConfig;
-
-    /**
-     * Cache of all the mongoose connections.
-     *
-     * @var KeyValue
-     */
-    protected _connections: KeyValue<Mongoose> = {};
-
-    /**
-     * Creates a new MongoDb connector
-     *
-     * @param config
-     */
-    constructor(config: IDbConfig) {
-        this._config = config;
-    }
-
-    /**
-     * Connect to Mongodb server and return a Promise. The database details are
-     * fetched from the configuration file.
-     */
-    public async connect(): Promise<typeof mongoose> {
-        return this.createConnection('default');
-    }
-
+export class MongoDbConnector extends BaseConnector<Mongoose> {
     /**
      * Creates a new MongoDb connection and maps it to the given name. If no uri
      * is provided, a uri is created from the db config data.
@@ -72,25 +39,6 @@ export class MongoDbConnector implements IDbConnector<Mongoose> {
         database = database.replace('/', '');
 
         return `mongodb://${host}:${port}/${database}`;
-    }
-
-    /**
-     * Returns a mongoose connection mapped to the given name. If no name
-     * is given, we will fetch the default connection.
-     *
-     * Throws an exception if no connection is mapped to the given name.
-     *
-     * @returns
-     * @throws
-     */
-    public connection(name?: string): Mongoose {
-        const connectionKey = name ?? 'default';
-        const connection = this._connections[connectionKey];
-
-        if (!connection) {
-            throw new Exception(`A connection for the key ${name} is not found.`);
-        }
-        return connection;
     }
 
     /**
