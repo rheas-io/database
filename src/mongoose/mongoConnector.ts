@@ -47,6 +47,8 @@ export class MongoDbConnector extends BaseConnector<Mongoose> {
     public closeConnections(): Promise<void[]> {
         const promises = mongoose.connections.map((connection) => connection.close());
 
+        this._connections = {};
+
         return Promise.all(promises);
     }
 }
