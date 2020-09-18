@@ -25,14 +25,12 @@
     "build-dev": "tsc --outDir ./build_dev && npm run copypackage_dev"
   },
   "dependencies": {
-    "mongoose": "^5.9.21",
-    "sequelize": "^6.3.5"
+    "mongoose": "^5.9.21"
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/mongoose": "^5.7.29",
     "@types/node": "^13.13.2",
-    "@types/sequelize": "^4.28.9",
     "jest": "^25.4.0",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
