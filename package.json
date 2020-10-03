@@ -28,14 +28,14 @@
     "build-dev": "tsc --outDir ./build_dev && npm run copypackage_dev"
   },
   "dependencies": {
-    "mongoose": "^5.9.21"
+    "mongoose": "^5.9.21",
+    "@types/mongoose": "^5.7.29"
   },
   "devDependencies": {
     "@rheas/contracts": "^0.0.1",
     "@rheas/errors": "^0.0.1",
     "@rheas/services": "^0.0.1",
     "@types/jest": "^25.2.1",
-    "@types/mongoose": "^5.7.29",
     "@types/node": "^13.13.2",
     "jest": "^25.4.0",
     "ts-jest": "^25.4.0",
