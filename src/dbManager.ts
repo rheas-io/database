@@ -13,6 +13,13 @@ export class DbManager extends DriverManager<IDbConnector<Mongoose>> {
     protected _config: IDbConfig;
 
     /**
+     * Sets the default driver key/name.
+     *
+     * @var string
+     */
+    protected _defaultDriver: string;
+
+    /**
      * Creates a new database connection manager. With this manager, we
      * can connect to multiple databases and get the connectors using keys.
      *
@@ -25,8 +32,7 @@ export class DbManager extends DriverManager<IDbConnector<Mongoose>> {
         super();
 
         this._config = config;
-
-        this.setDefaultDriver(this._config.connector);
+        this._defaultDriver = this._config.connector;
     }
 
     /**
