@@ -25,6 +25,8 @@ export class DbManager extends DriverManager<IDbConnector<Mongoose>> {
         super();
 
         this._config = config;
+
+        this.setDefaultDriver(this._config.connector);
     }
 
     /**
