@@ -1,6 +1,6 @@
 {
   "name": "@rheas/database",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Module containing database and model related functions",
   "main": "index.js",
   "directories": {
