@@ -16,7 +16,7 @@ export abstract class BaseModel<Connection = any, Model = any, Schema = any> imp
      * @var Mongoose.Model
      * @var SequelizeModel
      */
-    protected static _model: any;
+    protected _model: any;
 
     /**
      * Name of the database connection to be used with this model.
@@ -123,7 +123,7 @@ export abstract class BaseModel<Connection = any, Model = any, Schema = any> imp
      * @returns
      */
     public resetModel() {
-        BaseModel._model = undefined;
+        this._model = undefined;
 
         return this;
     }
@@ -134,7 +134,7 @@ export abstract class BaseModel<Connection = any, Model = any, Schema = any> imp
      * @returns
      */
     public model(): Model {
-        return (BaseModel._model = BaseModel._model || this.createModel());
+        return (this._model = this._model || this.createModel());
     }
 
     /**
