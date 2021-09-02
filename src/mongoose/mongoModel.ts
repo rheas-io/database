@@ -9,7 +9,13 @@ abstract class MongoModel<T extends Doc> extends Model<Con, Mod<T>, Schema<T, Mo
      * @returns
      */
     public createModel(): Mod<T, {}> {
-        return this.connection().model(this.modelName(), this.schema());
+        const connection = this.connection();
+        const model_name = this.modelName();
+
+        if(connection.models[model_name]){
+            return connection.models[model_name];
+        }        
+        return connection.model(model_name, this.schema());
     }
 
     /**
